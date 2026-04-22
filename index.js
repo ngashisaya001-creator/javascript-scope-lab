@@ -1,43 +1,49 @@
 // Write your solution in this file!
 //The Flatburger restaurant is creating a website that needs functionality to create a menu of food and drinks to sell to its customers. You are tasked with developing a menu with milkshakes and burgers. In addition to the menus you will also be creating menu features for both a milkshake and burger.
-//variables
-let menu = {
-  milkshakes: [],
-  burgers: []
-};
+// Task 2, Step 1: Variable Data
+// Declaring  'burgers' in GLOBAL scope so it's accessible everywhere in the code
+// Initializing it with 2 elements as instructed
+var burgers = ['Hamburger', 'Cheeseburger'];
 
-//writing a function named addburger and function scoped newburger and assigned it value "flabburger"
-function addburger() {
-  let newburger = "flabburger";
-  menu.burgers.push(newburger); //using the push method to add the newburger to the burgers array in the menu object
+// Declaring 'featuredDrink' in GLOBAL scope and assign it 'Strawberry Milkshake'
+var featuredDrink = 'Strawberry Milkshake';
 
+
+// Task 2, Step 2: Function and Block
+// Creating a function named 'addBurger'
+// Inside, a FUNCTION-SCOPED variable 'newBurger' is created using var
+function addBurger() {
+
+  var newBurger = 'Flatburger';
+
+  // Using .push() to add newBurger into the global burgers array
+  burgers.push(newBurger);
 }
 
-//writing an if statement whose condition is true, so that the code in its block will always execute.The code inside of the if statement’s block should do the following in this exact order:
 
+// Task 2, Step 3: Variable Declaration and Scope
+// Writing an if(true) block — the condition is always true so it always runs
 if (true) {
-  // code block
+
+  // 'anotherNewBurger' is BLOCK-SCOPED (const) — only lives inside this { } block
+  // Block-scoped means it cannot be accessed outside these curly braces
+  const anotherNewBurger = 'Maple Bacon Burger';
+
+  // Use .push() to add anotherNewBurger into the global burgers array
+  burgers.push(anotherNewBurger);
+}
+
+// Creating "changeFeaturedDrink"function that updates the global featuredDrink variable
+// This demonstrates how a function can modify a variable in the outer (global) scope
+function changeFeaturedDrink() {
+
+  // Reassigning the global featuredDrink variable to a new value
+  featuredDrink = 'The JavaShake';
 }
 
 
-
-//Create a block-scoped variable named anotherNewBurger and assign it the value 'Maple Bacon Burger
-//Use the .push() array method to add anotherNewBurger to the burgers array.
-    let anotherNewBurger = "Maple Bacon Burger";
-    menu.burgers.push(anotherNewBurger);
-
-//Write a function named changeFeaturedDrink that when called, changes the value of the FeaturedDrink variable to 'The JavaShake'.
-let FeaturedDrink = "The Chocolate Shake";
-
-function changeFeaturedDrink() {
-  FeaturedDrink = "The JavaShake";
-}  
-
-console.log(menu);
-
-
-
-
+// Export everything so Jest tests can import and verify the values and functions
+module.exports = { burgers, featuredDrink, addBurger, changeFeaturedDrink };
 
 
 
